@@ -33,6 +33,8 @@ def main():
     line = EPITAPH
     if not 1 <= len(line) <= 150:
         raise ValueError("epitaph must be 1-150 characters, got %d" % len(line))
+    if "\n" in line or "\r" in line:
+        raise ValueError("epitaph must be a single line")
     path = resolve_output_path()
     parent = os.path.dirname(path)
     if parent:
